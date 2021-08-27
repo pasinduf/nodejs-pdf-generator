@@ -1,0 +1,77 @@
+<style type='text/css'>
+    @page {
+        margin: 0;
+        size: letter;
+        /*or width x height 150mm 50mm*/
+    }
+
+    .header {
+        text-align: center;
+        color: black;
+        padding-bottom: 20px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    td,
+    th {
+        border: 1px solid gray;
+        font-size: 22px;
+        text-align: center;
+    }
+
+    table th {
+        background-color: #132639;
+        color: white;
+    }
+</style>
+
+<html>
+
+<body>
+    <div class='header'>
+        <h3>Day Report - {{title}}</h3>
+    </div>
+    <table align='center'>
+        <tr>
+            <th>#</th>
+            <th>Loan Number</th>
+            <th style='width:200px'>Name</th>
+            <th style='width:300px'>End date</th>
+            <th>Daily payment</th>
+            <th>Receipt</th>
+            <th>Collection</th>
+            <th>Arrears</th>
+            <th>Balance</th>
+        </tr>
+        {{#each records as |record|}}
+        <tr>
+            <td> {{increment @index}}</td>
+            <td>{{record.LoanNumber}}</td>
+            <td style='width:200px'>{{record.Name}}</td>
+            <td style='width:300px'>{{record.EndDate}}</td>
+            <td>{{record.DailyPayment}}</td>
+            <td>{{record.ReceiptNumber}}</td>
+            <td>{{record.Collection}}</td>
+            <td>{{record.Arrears}}</td>
+            <td>{{record.BalanceCarryForward}}</td>
+        </tr>
+        {{/each}}
+        <tr>
+            <td><b>Total</b></td>
+            <td></td>
+            <td style='width:200px'></td>
+            <td style='width:300px'></td>
+            <td></td>
+            <td></td>
+            <td><b>{{totalCollection}}</b></td>
+            <td><b>{{totalArrears}}</b></td>
+            <td><b>{{totalBalance}}</b></td>
+        </tr>
+    </table>
+</body>
+
+</html>

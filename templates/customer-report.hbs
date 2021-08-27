@@ -1,0 +1,109 @@
+<style type='text/css'>
+    @page {
+        margin: 0;
+        size: letter;
+    }
+
+    .header {
+        text-align: center;
+        color: black;
+        margin-top: 10px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    table.ledger td,
+    table.ledger th {
+        border: 1px solid gray;
+        font-size: 22px;
+        text-align: center;
+    }
+
+    table.ledger th {
+        background-color: #132639;
+        color: white;
+    }
+
+    table.detail td {
+        font-size: 22px;
+        text-align: center;
+    }
+</style>
+
+<html>
+
+<body>
+    <div class='header'>
+        <h3>SGS - Customer report</h3>
+    </div>
+    <table align='center' class="detail">
+        <tr>
+            <td>
+                <table>
+                    <tr>
+                        <th>Name</th>
+                        <td>test name</td>
+                    </tr>
+                    <tr>
+                        <th>Customer Number</th>
+                        <td>test number</td>
+                    </tr>
+                    <tr>
+                        <th>Period</th>
+                        <td>test period</td>
+                    </tr>
+                </table>
+            </td>
+            <td>
+                <table>
+                    <tr>
+                        <th>Loan Number</th>
+                        <td>test number loan</td>
+                    </tr>
+                    <tr>
+                        <th>Amount</th>
+                        <td>test amount</td>
+                    </tr>
+                    <tr></tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <br />
+    <table align='center' class="ledger">
+        <tr>
+            <th>#</th>
+            <th>Date</th>
+            <th>Collection</th>
+            <th>Receipt No:</th>
+            <th>Document Ch:</th>
+            <th>Arrears</th>
+            <th>Balance</th>
+        </tr>
+        {{#each records as |record|}}
+        <tr>
+            <td> {{increment @index}}</td>
+            <td>{{record.LoanNumber}}</td>
+            <td>{{record.Name}}</td>
+            <td>{{record.EndDate}}</td>
+            <td>{{record.DailyPayment}}</td>
+            <td>{{record.ReceiptNumber}}</td>
+            <td>{{record.Collection}}</td>
+        </tr>
+        {{/each}}
+        <tr>
+            <td><b>Total</b></td>
+            <td></td>
+            <td><b>{{totalCollection}}</b></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+</body>
+
+</html>
